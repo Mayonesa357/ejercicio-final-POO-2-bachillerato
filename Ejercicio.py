@@ -1,5 +1,5 @@
 class Animales():
-    def __init__(self, nombreanimal, tipoespecie, nombrehabitat, peligroextincion):
+    def __init__(self, nombreanimal, tipoespecie, nombrehabitat, peligroextincion=False):
         self.__nombreanimal = nombreanimal
         self.__tipoespecie = tipoespecie
         self.__nombrehabitat = nombrehabitat
@@ -55,17 +55,7 @@ def mostrar(): #muestra los datos de las caracteristicas de los animales añadid
         print(animal.get_tipoespecie())
         print(animal.get_nombrehabitat())
         print(animal.get_peligroextincion(), "esta en peligro de extincion")
-
-def extincion(): #pregunta si el animal esta extinto y si es asi lo confirma
-    preguntaExtincion = input ("¿Quiere saber si los animales estan en peligro de extincion? ")
-    while preguntaExtincion.lower()=="si":
-        for animal in zoologico:
-            extintos = input ("¿", animal.get_nombreanimal(), "se encuentra en peligro de extincion? ")
-            if extintos.lower()=="si":
-                animal.set__peligroextincion(True)
-                print (animal,"esta en peligro de extincion")
         
 if __name__=='__main__':
     introduccionDatos()
-    #extincion()
     mostrar()
