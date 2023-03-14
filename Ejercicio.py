@@ -23,7 +23,7 @@ class Animales():
     def get_nombrehabitat(self):
         return self.__nombrehabitat
     
-    def set_peligroextincion(self,):
+    def set_peligroextincion(self, peligroextincion):
         self.__peligroextincion(False) 
 
     def get_peligroextincion(self):
@@ -41,7 +41,10 @@ def introduccionDatos(): #introduce los datos del animal y los añade a la lista
         nombre_animal=input("¿Como se llama su animal? ")
         tipo_especie=input("¿A que especie pertenece? ")
         nombre_habitat=input("¿En que habitat se encuentra? ")
-        animal=Animales(nombre_animal,tipo_especie,nombre_habitat,peligroextincion)
+        peligro_extincion=input("¿Se encuentra en peligro de extincion? ")
+        animal=Animales(nombre_animal,tipo_especie,nombre_habitat,peligro_extincion)
+        if peligro_extincion.lower()=="si":
+            animal.set__peligroextincion(True)
         zoologico.append(animal)
         animalesLista=animalesLista+1
         respuesta=input("¿Quiere introducir informacion de mas animales? ")
@@ -51,17 +54,18 @@ def mostrar(): #muestra los datos de las caracteristicas de los animales añadid
         print(animal.get_nombreanimal()) 
         print(animal.get_tipoespecie())
         print(animal.get_nombrehabitat())
+        print(animal.get_peligroextincion(), "esta en peligro de extincion")
 
 def extincion(): #pregunta si el animal esta extinto y si es asi lo confirma
     preguntaExtincion = input ("¿Quiere saber si los animales estan en peligro de extincion? ")
     while preguntaExtincion.lower()=="si":
         for animal in zoologico:
-            extintos = input ("¿", animal.get._nombreanimal(), "se encuentra en peligro de extincion? ")
+            extintos = input ("¿", animal.get_nombreanimal(), "se encuentra en peligro de extincion? ")
             if extintos.lower()=="si":
                 animal.set__peligroextincion(True)
                 print (animal,"esta en peligro de extincion")
         
 if __name__=='__main__':
     introduccionDatos()
-    extincion()
+    #extincion()
     mostrar()
