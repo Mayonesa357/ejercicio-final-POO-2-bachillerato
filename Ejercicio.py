@@ -24,7 +24,7 @@ class Animales():
         return self.__nombrehabitat
     
     def set_peligroextincion(self, peligroextincion):
-        self.__peligroextincion(False) 
+        self.__peligroextincion=peligroextincion
 
     def get_peligroextincion(self):
         return self.__peligroextincion
@@ -34,8 +34,6 @@ zoologico=[] #se inicia la lista donde se almacenara la informacion de los anima
 
 
 def introduccionDatos(): #introduce los datos del animal y los añade a la lista
-    global animalesLista 
-    animalesLista = 0 #se inicia la variable para usarla como contador
     respuesta=input("¿Quiere introducir informacion de un animal? ")
     while respuesta.lower()=="si":
         nombre_animal=input("¿Como se llama su animal? ")
@@ -43,19 +41,20 @@ def introduccionDatos(): #introduce los datos del animal y los añade a la lista
         nombre_habitat=input("¿En que habitat se encuentra? ")
         peligro_extincion=input("¿Se encuentra en peligro de extincion? ")
         animal=Animales(nombre_animal,tipo_especie,nombre_habitat,peligro_extincion)
-        if peligro_extincion.lower()=="si":
-            animal.set__peligroextincion(True)
+        if peligro_extincion.lower()=="si": #cambia el atributo segun este en peligro de extincion o no
+            animal.set_peligroextincion(True)
+        else:
+            animal.set_peligroextincion(False)
         zoologico.append(animal)
-        animalesLista=animalesLista+1
         respuesta=input("¿Quiere introducir informacion de mas animales? ")
 
 def mostrar(): #muestra los datos de las caracteristicas de los animales añadidos
     for animal in zoologico:
-        print(animal.get_nombreanimal()) 
-        print(animal.get_tipoespecie())
-        print(animal.get_nombrehabitat())
-        print(animal.get_peligroextincion(), "esta en peligro de extincion")
-        
+        if animal.get_peligroextincion() == True:
+            print("Habitat:",animal.get_nombreanimal(), "Especie:",animal.get_tipoespecie(), "Habitat:",animal.get_nombrehabitat(), "si esta en peligro de extincion")
+        else:
+            print("Habitat:",animal.get_nombreanimal(), "Especie:",animal.get_tipoespecie(), "Habitat:",animal.get_nombrehabitat(), "no esta en peligro de extincion")
+
 if __name__=='__main__':
     introduccionDatos()
     mostrar()
