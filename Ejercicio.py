@@ -1,5 +1,5 @@
-class Animales():
-    def __init__(self, nombreanimal, tipoespecie, nombrehabitat, peligroextincion=False):
+class Animales(): #https://susana.informaticailiberis.com/python/8_poo.html enlace ejercicio
+    def __init__(self, nombreanimal, tipoespecie, nombrehabitat, peligroextincion):
         self.__nombreanimal = nombreanimal
         self.__tipoespecie = tipoespecie
         self.__nombrehabitat = nombrehabitat
@@ -29,6 +29,9 @@ class Animales():
     def get_peligroextincion(self):
         return self.__peligroextincion
 
+class AnAndalucia (Animales):
+    def __init__(self, nombreanimal, tipoespecie, nombrehabitat, peligroextincion=False):
+        super().__init__(nombreanimal, tipoespecie, nombrehabitat, peligroextincion)
 
 zoologico=[] #se inicia la lista donde se almacenara la informacion de los animales
 
@@ -54,6 +57,8 @@ def mostrar(): #muestra los datos de las caracteristicas de los animales añadid
             print("Habitat:",animal.get_nombreanimal(), "Especie:",animal.get_tipoespecie(), "Habitat:",animal.get_nombrehabitat(), "si esta en peligro de extincion")
         else:
             print("Habitat:",animal.get_nombreanimal(), "Especie:",animal.get_tipoespecie(), "Habitat:",animal.get_nombrehabitat(), "no esta en peligro de extincion")
+
+
 
 if __name__=='__main__':
     introduccionDatos()
