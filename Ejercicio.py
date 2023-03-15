@@ -29,9 +29,14 @@ class Animales(): #https://susana.informaticailiberis.com/python/8_poo.html enla
     def get_peligroextincion(self):
         return self.__peligroextincion
 
-class AnAndalucia (Animales):
-    def __init__(self, nombreanimal, tipoespecie, nombrehabitat, peligroextincion=False):
+class AnAndalucia (Animales): 
+    def __init__(self, nombreparque, nombreanimal, tipoespecie, nombrehabitat, peligroextincion):
+        self.__nombreparque=nombreparque
         super().__init__(nombreanimal, tipoespecie, nombrehabitat, peligroextincion)
+    def set_nombreparque(self, nombreparque):
+        self.__nombreparque=nombreparque
+    def get_nombreparque(self):
+        return self.__nombreparque
 
 zoologico=[] #se inicia la lista donde se almacenara la informacion de los animales
 
